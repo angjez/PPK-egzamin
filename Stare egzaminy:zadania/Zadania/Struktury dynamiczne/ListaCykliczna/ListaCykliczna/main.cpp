@@ -12,15 +12,15 @@ int main(int argc, const char * argv[]) {
     
 
     for(int i : {5, 6, 7 , 8})
-        dodajNaPoczatek(pHead, i);
+        dodajNaPoczatek(pHead2, i);
     
-    polacz(pHead, pHead2);
+//    polacz(pHead, pHead2);
     
     wypisz(pHead);
     
     usun(pHead);
     
-    wypisz(pHead);
+//    wypisz(pHead);
     
     return 0;
 }

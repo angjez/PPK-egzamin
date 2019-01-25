@@ -4,16 +4,19 @@
 
 void dodajNaPoczatek ( element * & pHead , const T & wartosc )
 {
-    element * nowy = new element {wartosc};
-
-    if(pHead)
-    {
-        nowy->pNext = pHead->pNext;
-        pHead->pNext = nowy;
+    if (pHead == nullptr){
+        pHead = new element {wartosc, pHead};
+        pHead->pNext = pHead;
     }
-    else //lista pusta, głowa ma wskazywać na siebie
-        nowy->pNext = nowy;
-    pHead = nowy;
+    
+    else{
+        element * ogon = pHead;
+        while(ogon->pNext != pHead)
+            ogon = ogon->pNext;
+        element * nowy = new element {wartosc};
+        nowy -> pNext = ogon -> pNext;
+        ogon -> pNext = nowy;
+    }
 }
 
 void wypisz ( element * pHead )
@@ -21,9 +24,8 @@ void wypisz ( element * pHead )
     element * pierwszy = pHead;
     while(pHead)
     {
-        //należy przesunąć wskaźnik już na początku funkcji, gdyż w innym przypadku warunek pHead == pierwszy zostanie natychmiast spełniony i zakończy pętlę!
-        pHead = pHead->pNext;
         std::cout << pHead->wartosc << " ";
+        pHead = pHead->pNext;
         if(pHead == pierwszy)
             break;
     }
