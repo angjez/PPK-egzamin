@@ -29,5 +29,7 @@ void dodajNaKoniec(stGenom * & pHead, double gen);
 void dodajNaPoczatek (stGenom * & pHead, double gen);
 void wypisz (stGenom * pHead);
 void usun (stGenom * & pHead);
+void usunElem ( stGenom * & pHead , const stGenom * pDoUsuniecia );
+
 
 #endif /* funkcje_hpp */
