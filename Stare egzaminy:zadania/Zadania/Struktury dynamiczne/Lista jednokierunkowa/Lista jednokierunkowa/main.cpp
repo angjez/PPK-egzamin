@@ -15,8 +15,8 @@ int main(int argc, const char * argv[]) {
 
     wypisz(pHead2);
     wypisz(pHead);
-    wypisz(roznicaMnogosciowa(pHead, pHead2));
-    usunParzyste(pHead2);
-    wypisz(pHead2);
+//    usunPowtorzenia(pHead);
+//    usunPowtorzenia(pHead2);
+    wypisz(scalListyPosortowane(pHead, pHead2));
     return 0;
 }

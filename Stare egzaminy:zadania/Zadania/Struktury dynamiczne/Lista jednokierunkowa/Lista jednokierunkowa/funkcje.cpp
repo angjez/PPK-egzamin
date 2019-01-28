@@ -139,37 +139,23 @@ element * roznicaMnogosciowa ( element * pH1 , element * pH2 )
 
 element * scalListyPosortowane ( element * & pH1 , element * & pH2 )
 {
-    /* a dummy first node to hang the result on */
-    element * dummy;
+    element * scaloneListy = nullptr;
     
-    /* tail points to the last result node  */
-    element * tail = dummy;
+    if (pH1 == nullptr)
+        return (pH1);
+    else if (pH2 == nullptr)
+        return (pH2);
     
-    /* so tail->next is the place to add new nodes
-     to the result. */
-    dummy->pNext = nullptr;
-    while (1)
-    {
-        if (a == NULL)
-        {
-            /* if either list runs out, use the
-             other list */
-            tail->next = b;
-            break;
-        }
-        else if (b == NULL)
-        {
-            tail->next = a;
-            break;
-        }
-        if (a->data <= b->data)
-            MoveNode(&(tail->next), &a);
-        else
-            MoveNode(&(tail->next), &b);
-        
-        tail = tail->next;
+    /* Pick either a or b, and recur */
+    if (pH1->wartosc <= pH2->wartosc) {
+        scaloneListy = pH1;
+        scaloneListy->pNext = scalListyPosortowane(pH1->pNext, pH2);
     }
-    return(dummy.next);
+    else {
+        scaloneListy = pH2;
+        scaloneListy->pNext = scalListyPosortowane(pH1, pH2->pNext);
+    }
+    return scaloneListy;
 }
 
 void usunPowtorzenia (element * & pHead)
