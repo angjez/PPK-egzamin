@@ -46,10 +46,6 @@ void odwrocListe (element * & pHead) ;
  element listy */
 void odwrocListeRek (element * & pHead);
 
-/** Funkcja usuwa wszystkie elementy powtarzające się w liście jednokierunkowej. Po wykonaniu funkcji każdy element występuje w liście co najwyżej raz.
-    @param[in, out] pHead wskaźnik na pierwszy element listy jednokierunkowej */
-void usunPowtorzenia (element * & pHead) ;
-
 /** Funkcja realizuje sumę mnogościową zbiorów reprezentowanych przez listy. Po wykonaniu funkcji zbiory wejściowe nie są zmodyfikowane.
     @param pH1 wskaźnik na pierwszy element pierwszej listy jednokierunkowej (pierwszy zbiór), po wykonaniu funkcji lista nie jest zmodyfikowana
     @param pH2 wskaźnik na pierwszy element drugiej listy jednokierunkowej (drugi zbiór), po wykonaniu funkcji lista nie jest zmodyfikowana
