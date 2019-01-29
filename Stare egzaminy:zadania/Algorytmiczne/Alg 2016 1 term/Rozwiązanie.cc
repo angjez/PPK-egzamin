@@ -1,9 +1,3 @@
-#include <string>
-#include <fstream>
-#include <iostream>
-
-#include "funkcje.hpp"
-
 bool szachownicaPoprawna (std::string nazwaPliku)
 {
     char tab[8][8];

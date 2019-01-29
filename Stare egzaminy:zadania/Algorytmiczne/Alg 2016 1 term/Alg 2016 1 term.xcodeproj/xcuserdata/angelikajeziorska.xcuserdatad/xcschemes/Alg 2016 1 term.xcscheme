@@ -47,7 +47,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "YES"
-      customWorkingDirectory = "/Users/angelikajeziorska/Documents/Stare egzaminy:zadania/Algorytmiczne/Alg 2016 1 term/Alg 2016 1 term"
+      customWorkingDirectory = "/Users/angelikajeziorska/Documents/PPK-egzamin/Stare egzaminy:zadania/Algorytmiczne/Alg 2016 1 term/Alg 2016 1 term"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
