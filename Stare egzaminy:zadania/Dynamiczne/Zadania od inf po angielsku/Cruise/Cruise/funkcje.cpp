@@ -60,9 +60,39 @@ Passenger * addPassenger (Passenger * & pH, const std::string & name, const std:
     return pH;
 }
 
-void addPassengerToCruise (Cruise * & pH, Cruise * & pT, const std::string & date, const std::string & start_harbour, const std::string & end_harbour, const std::string & name, const std::string & surname);
+void addPassengerToCruise (Cruise * & pH, Cruise * & pT, const std::string & date, const std::string & start_harbour, const std::string & end_harbour, const std::string & name, const std::string & surname)
+{
+    Cruise * tmp = pH;
+    while(tmp) {
+        if(tmp->start_harbour == start_harbour && tmp->end_harbour == end_harbour && tmp->date == date)
+            break;
+        tmp = tmp -> pNext;
+    }
+    if(tmp == nullptr)
+        tmp = addCruise(pH, pT, date, start_harbour, end_harbour);
+    
+    addPassenger(tmp->pPassengers, name, surname);
+    
+}
 
-Cruise * favourite (Cruise * & pH);
+Cruise * favourite (Cruise * & pHead)
+{
+    Cruise * favourite = pHead, * tmp = pHead;
+    int passengers = 0, max = 0;
+    while(tmp) {
+        passengers = 0;
+        while(tmp->pPassengers) {
+            passengers++;
+            tmp->pPassengers = tmp->pPassengers->pNext;
+        }
+        if(max < passengers) {
+            max = passengers;
+            favourite = tmp;
+        }
+        tmp = tmp->pNext;
+    }
+    return favourite;
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -85,3 +115,14 @@ void showCruises (Cruise * pHead)
     }
 }
 
+void showPassengersOnCruise (Cruise * pHead)
+{
+    while(pHead) {
+        std::cout << pHead->start_harbour << " " << pHead->end_harbour << " " << pHead->date << std::endl;
+        while(pHead->pPassengers) {
+            std::cout << pHead->pPassengers->name << " " << pHead->pPassengers->surname << std::endl;
+            pHead->pPassengers = pHead->pPassengers->pNext;
+        }
+        pHead = pHead->pNext;
+    }
+}

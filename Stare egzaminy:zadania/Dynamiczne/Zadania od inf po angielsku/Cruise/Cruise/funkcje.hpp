@@ -32,10 +32,11 @@ Passenger * addPassenger (Passenger * & pH, const std::string & name, const std:
 void addPassengerToCruise (Cruise * & pH, Cruise * & pT, const std::string & date, const std::string & start_harbour, const std::string & end_harbour, const std::string & name, const std::string & surname);
 
 /* The function returns an address of a cruise with the maximal length of passengers. Passed parameters: an address of the head of the list pH. If the list of cruises is empty, the function returns NULL (or nullptr or 0). If several cruises have the same lengths of passengers, the function returns an address of any of cruises with maximal length of passengers. */
-Cruise * favourite (Cruise * & pH);
+Cruise * favourite (Cruise * & pHead);
 
 /* Additional functions */
 void showPassengers (Passenger * pHead);
 void showCruises (Cruise * pHead);
+void showPassengersOnCruise (Cruise * pHead);
 
 #endif /* funkcje_hpp */

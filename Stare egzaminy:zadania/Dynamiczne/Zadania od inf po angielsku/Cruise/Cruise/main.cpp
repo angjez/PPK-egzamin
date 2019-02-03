@@ -18,7 +18,19 @@ int main(int argc, const char * argv[]) {
     addCruise(pHeadCruise, pTailCruise, "2018-02-14", "Messina", "Dover");
     addCruise(pHeadCruise, pTailCruise, "2019-11-05", "Helsinki", "Naples");
     
-    showCruises(pHeadCruise);
+    addPassengerToCruise(pHeadCruise, pTailCruise, "2019-01-03", "Dover", "Helsinki", "Jan", "Kaniowski");
+    addPassengerToCruise(pHeadCruise, pTailCruise, "2019-01-03", "Dover", "Helsinki", "Moritz", "Haber");
+    addPassengerToCruise(pHeadCruise, pTailCruise, "2017-08-21", "Helsinki", "Calais", "Franz", "Nogay");
+    
+    std::cout << std::endl;
+    
+//    showPassengersOnCruise(pHeadCruise);
+
+    Cruise * fav = nullptr;
+    fav = favourite(pHeadCruise);
+    if(fav != nullptr)
+        std::cout << fav->start_harbour << " " << fav->end_harbour << " " << fav->date << std::endl;
+    
     
     return 0;
 }
