@@ -7,16 +7,15 @@ int main(int argc, const char * argv[]) {
     element * pHead = nullptr;
     element * pHead2 = nullptr;
     
-    for(int i : {1, 2, 3, 4, 5, 6})
+    for(int i : {5, 5, 5, 5, 5})
         dodajIteracyjnieDoListyPosortowanej(pHead, i);
     
     for(int i : {0, 2, 5, 9, 8, 0, 0, 0})
         dodajIteracyjnieDoListyPosortowanej(pHead2, i);
 
-    wypisz(pHead2);
     wypisz(pHead);
-//    usunPowtorzenia(pHead);
-//    usunPowtorzenia(pHead2);
-    wypisz(scalListyPosortowane(pHead, pHead2));
+    usunPowtorzenia(pHead);
+    wypisz(pHead);
+//    wypisz(scalListyPosortowane(pHead, pHead2));
     return 0;
 }

@@ -46,20 +46,10 @@ element * znajdzElementRekurencyjnie ( element * pHead , T liczba )
 
 void odwrocListe (element * & pHead)
 {
-    element * pCurr = pHead, * pPrev = nullptr, * pForw = nullptr;
-    
-    while (pCurr != nullptr)
-    {
-        pForw = pCurr->pNext;
-        
-        // zamiana wskaźnika obecnego elementu
-        pCurr->pNext = pPrev;
-        
-        // przesunięcie wskaźników o pozycję do przodu
-        pPrev = pCurr;
-        pCurr = pForw;
-    }
-    pHead = pPrev;
+    for (element * tmp = pHead; tmp->pNext != nullptr; tmp = tmp -> pNext)
+        for (element * tmp2 = tmp->pNext; tmp2 != nullptr; tmp2 = tmp2 -> pNext)
+            std::swap(tmp->wartosc, tmp2->wartosc);
+
 }
 
 void odwrocListeRek (element * & pHead)

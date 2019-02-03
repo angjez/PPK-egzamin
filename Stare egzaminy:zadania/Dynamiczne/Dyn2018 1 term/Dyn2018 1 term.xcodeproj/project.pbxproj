@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		660D4F1521F4A2F200F7D1B6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 660D4F1221F4A2F200F7D1B6 /* main.cpp */; };
-		660D4F1621F4A2F200F7D1B6 /* funkcje.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 660D4F1321F4A2F200F7D1B6 /* funkcje.cpp */; };
+		667161132200D09E0083BD9C /* funkcje.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 667161112200D09E0083BD9C /* funkcje.cpp */; };
+		667161142200D09E0083BD9C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 667161122200D09E0083BD9C /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,9 +25,9 @@
 
 /* Begin PBXFileReference section */
 		660D4F0521F4A1C800F7D1B6 /* Dyn2018 1 term */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Dyn2018 1 term"; sourceTree = BUILT_PRODUCTS_DIR; };
-		660D4F1221F4A2F200F7D1B6 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = "Dyn2018 1 term/main.cpp"; sourceTree = "<group>"; };
-		660D4F1321F4A2F200F7D1B6 /* funkcje.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = funkcje.cpp; path = "Dyn2018 1 term/funkcje.cpp"; sourceTree = "<group>"; };
-		660D4F1421F4A2F200F7D1B6 /* funkcje.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = funkcje.hpp; path = "Dyn2018 1 term/funkcje.hpp"; sourceTree = "<group>"; };
+		667161102200D09E0083BD9C /* funkcje.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = funkcje.hpp; sourceTree = "<group>"; };
+		667161112200D09E0083BD9C /* funkcje.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = funkcje.cpp; sourceTree = "<group>"; };
+		667161122200D09E0083BD9C /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +60,9 @@
 		660D4F0721F4A1C800F7D1B6 /* Dyn2018 1 term */ = {
 			isa = PBXGroup;
 			children = (
-				660D4F1221F4A2F200F7D1B6 /* main.cpp */,
-				660D4F1321F4A2F200F7D1B6 /* funkcje.cpp */,
-				660D4F1421F4A2F200F7D1B6 /* funkcje.hpp */,
+				667161112200D09E0083BD9C /* funkcje.cpp */,
+				667161102200D09E0083BD9C /* funkcje.hpp */,
+				667161122200D09E0083BD9C /* main.cpp */,
 			);
 			path = "Dyn2018 1 term";
 			sourceTree = "<group>";
@@ -123,8 +123,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				660D4F1621F4A2F200F7D1B6 /* funkcje.cpp in Sources */,
-				660D4F1521F4A2F200F7D1B6 /* main.cpp in Sources */,
+				667161142200D09E0083BD9C /* main.cpp in Sources */,
+				667161132200D09E0083BD9C /* funkcje.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

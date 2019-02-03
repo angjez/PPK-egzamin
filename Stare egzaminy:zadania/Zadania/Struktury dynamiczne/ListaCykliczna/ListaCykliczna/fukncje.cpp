@@ -11,7 +11,7 @@ void dodajNaPoczatek ( element * & pHead , const T & wartosc )
     
     else {
         element * ogon = pHead;
-        while(ogon->pNext != pHead && ogon->pNext != nullptr)
+        while(ogon->pNext != pHead /*&& ogon->pNext != nullptr*/)
             ogon = ogon->pNext;
         pHead = new element {wartosc};
         pHead->pNext = ogon->pNext;

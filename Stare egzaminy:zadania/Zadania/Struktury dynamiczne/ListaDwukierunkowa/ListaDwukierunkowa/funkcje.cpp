@@ -37,12 +37,9 @@ void dodajNaKoniec (element * & pHead, element * & pTail, const T & wartosc )
 void posortujListe (element * & pHead, element * & pTail)
 {
     for(element * tmp = pHead; tmp->pNext != nullptr; tmp = tmp->pNext)
-    {
-        for(element * tmp2 = tmp->pNext; tmp2 != nullptr; tmp2 = tmp2->pNext){
+        for(element * tmp2 = tmp->pNext; tmp2 != nullptr; tmp2 = tmp2->pNext)
             if(tmp->wartosc >= tmp2->wartosc)
                 std::swap (tmp->wartosc, tmp2->wartosc);
-        }
-    }
 }
 
 void dodajDoListyPosortowanej ( element * & pHead, element * & pTail, const T & wartosc)
@@ -50,7 +47,8 @@ void dodajDoListyPosortowanej ( element * & pHead, element * & pTail, const T & 
     element * current = pHead;
     
     if (pHead == nullptr){
-        pHead = new element {wartosc, pTail, pHead};
+        pHead = new element {wartosc, nullptr, pHead};
+        pTail = pHead;
     }
     
     // nowy wskaźnik będzie dodany na początek listy
