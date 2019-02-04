@@ -1,95 +1,118 @@
-#include <iostream>
-
 #include "funkcje.hpp"
 
-Pracownik * znajdzLubDodajPracownika(Pracownik * & pHead, const std::string & nazwisko)
+Pracownik * znajdzLubDodajPracownika(Pracownik * & pHead, Pracownik * & pTail, const std::string & nazwisko)
 {
-    //sprawdzenie, czy pracownik już wystąpił
-    Pracownik * tmp = pHead;
-    while(tmp){
-        if(tmp->nazwisko == nazwisko){
+    Pracownik * szukaj = pHead;
+    while(szukaj) {
+        if(szukaj->nazwisko == nazwisko)
+            return szukaj;
+        else
+            szukaj = szukaj -> pNext;
+    }
+    
+    if(pHead == nullptr) {
+        pHead = new Pracownik {nazwisko, nullptr, pHead};
+        pTail = pHead;
+        return pHead;
+    }
+    
+    else if(pHead->nazwisko >= nazwisko) {
+        pHead = new Pracownik {nazwisko, nullptr, pHead};
+        pHead->pNext->pPrev = pHead;
+        return pHead;
+    }
+    else {
+        Pracownik * tmp = pHead;
+        while (tmp->pNext != nullptr && tmp->nazwisko < nazwisko)
+            tmp = tmp->pNext;
+    
+        if (tmp->pNext == nullptr){
+            tmp = new Pracownik {nazwisko, tmp, nullptr};
+            tmp->pPrev->pNext = tmp;
             return tmp;
         }
-        else
-            tmp = tmp->pNext;
+        Pracownik * nowy = new Pracownik {nazwisko, tmp, tmp->pNext};
+        tmp->pNext = nowy;
+        tmp->pNext->pPrev = nowy;
+        return nowy;
     }
-    
-    //wskaźnik na obecnego pracownika
-    Pracownik* current = pHead;
-    
-    // alokujemy nowy wskaźnik
-    Pracownik* newNode = (struct Pracownik*)malloc(sizeof(struct Pracownik));
-    
-    // przypisujemy nazwisko do wskaźnika, tworzymy pNext i pPrev dla niego
-    newNode->nazwisko = nazwisko;
-    newNode->pPrev = newNode->pNext = nullptr;
-        
-    // lista pusta = nowy wskaźnik jest głową
-    if (pHead == nullptr){
-        pHead = newNode;
-        return newNode;
-    }
-        
-    // nowy wskaźnik będzie dodany na początek listy
-    else if (pHead->nazwisko >= newNode->nazwisko) {
-        //wskaźnik na głowę listy to teraz "lewy" wskaźnik nowego elementu
-        newNode->pNext = pHead;
-        //tworzymy wskaźnik pPrev ze starego pierwszego elementu na nowy pierwszy element
-        newNode->pNext->pPrev = newNode;
-        //nowy wskaźnik to głowa
-        pHead = newNode;
-        return newNode;
-    }
-        
-    else {
-        //szukamy miejsca do umieszczenia elementu
-        while (current->pNext != nullptr && current->pNext->nazwisko < newNode->nazwisko)
-            current = current->pNext;
-        
-        //wskaźnik na następny element musi zostać przesunięty, bo teraz nowy element będzie wskazywał na następny
-        newNode->pNext = current->pNext;
-            
-        //jeśli nowy element nie jest na końcu listy trzeba dostosować wskaźnik na poprzedni
-        if (current->pNext != nullptr){
-            //wskaźnik pPrev z następnego elementu wskazuje na nowy element
-            newNode->pNext->pPrev = newNode;
-            return newNode;
-        }
-        
-        //obecny element wskazuje na nowy wskaźnikiem pNext
-        current->pNext = newNode;
-        //nowy element wskazuje na obecny wskaźnikiem pPrev
-        newNode->pPrev = current;
-        }
-    return nullptr;
 }
 
-void dodajZadanie (Zadanie * pRoot, const int & priorytet, const std::string & tresc)
+void dodajZadanie (Zadanie * & pRoot, const int & priorytet, const std::string & tresc)
 {
-    if (not pRoot) // drzewo puste
-        pRoot = new Zadanie { priorytet, tresc, nullptr, nullptr };
-    else  // w drzewie juz co jest
+    if (not pRoot)
+        pRoot = new Zadanie { priorytet, tresc, 0, 0 };
+    else // w drzewie juz cos jest
     {
-        if (priorytet < pRoot->priotytet) // idziemy w lewo
-            dodajZadanie(pRoot->pLewy, priorytet, tresc);
-        else // idziemy w prawo
-            dodajZadanie(pRoot->pPrawy, priorytet, tresc);
+        auto p = pRoot;
+        
+        while (p)
+        {
+            if (priorytet < p->priotytet) // idziemy w lewo
+            {
+                if (p->pLewy)  // jezeli istnieje pLewy
+                    p = p->pLewy;
+                else
+                {
+                    p->pLewy = new Zadanie { priorytet, tresc, 0, 0 };
+                    break;
+                }
+            }
+            else  // idziemy w prawo
+            {
+                if (p->pPrawy)
+                    p = p->pPrawy;
+                else
+                {
+                    p->pPrawy = new Zadanie { priorytet, tresc, 0, 0 };
+                    break;
+                }
+            }
+        }
     }
 }
 
-void dodajZadaniePracownikowi(Pracownik * pHead, const int & priorytet, const std::string & tresc, const std::string & nazwisko)
+void dodajZadaniePracownikowi(Pracownik * & pHead, Pracownik * & pTail, const int & priorytet, const std::string & tresc, const std::string & nazwisko)
 {
-    dodajZadanie(znajdzLubDodajPracownika(pHead, nazwisko)->pZadania, priorytet, tresc);
+    dodajZadanie(znajdzLubDodajPracownika(pHead, pTail, nazwisko)->pZadania, priorytet, tresc);
 }
 
-void usunPracownikowBezZadan()
+void usunPracownikowBezZadan(Pracownik * & pHead, Pracownik * & pTail)
 {
-    
+    Pracownik * tmp = pHead, * prev = nullptr;
+    while(tmp) {
+        if (tmp->pZadania == nullptr) {
+            if(tmp->pPrev == nullptr) {
+                tmp->pNext = pHead;
+                pHead->pPrev = nullptr;\
+                delete tmp;
+            }
+            else if (tmp->pNext == nullptr) {
+                tmp->pPrev = pTail;
+                pTail->pNext = nullptr;
+                delete tmp;
+            }
+            else {
+                prev->pNext = tmp->pNext;
+                tmp->pNext->pPrev = prev;
+                delete tmp;
+            }
+        }
+        else
+            prev = tmp;
+            tmp = tmp -> pNext;
+    }
 }
 
-void odwrocKolejnoscPracownikow()
+void odwrocKolejnoscPracownikow(Pracownik * & pHead, Pracownik * & pTail)
 {
-    
+    for(Pracownik * tmp = pHead; tmp->pNext != nullptr; tmp = tmp->pNext)
+    {
+        for(Pracownik * tmp2 = tmp->pNext; tmp2 != nullptr; tmp2 = tmp2->pNext){
+            std::swap (tmp->pZadania, tmp2->pZadania);
+            std::swap (tmp->nazwisko, tmp2->nazwisko);
+        }
+    }
 }
 
 void wypisz(Pracownik * pHead)

@@ -13,10 +13,10 @@ int main(int argc, const char * argv[]) {
     
     showPassengers(pHeadPass);
     
-    addCruise(pHeadCruise, pTailCruise, "2019-01-03", "Dover", "Helsinki");
-    addCruise(pHeadCruise, pTailCruise, "2017-05-29", "Naples", "Calais");
-    addCruise(pHeadCruise, pTailCruise, "2018-02-14", "Messina", "Dover");
-    addCruise(pHeadCruise, pTailCruise, "2019-11-05", "Helsinki", "Naples");
+//    addCruise(pHeadCruise, pTailCruise, "2019-01-03", "Dover", "Helsinki");
+//    addCruise(pHeadCruise, pTailCruise, "2017-05-29", "Naples", "Calais");
+//    addCruise(pHeadCruise, pTailCruise, "2018-02-14", "Messina", "Dover");
+//    addCruise(pHeadCruise, pTailCruise, "2019-11-05", "Helsinki", "Naples");
     
     addPassengerToCruise(pHeadCruise, pTailCruise, "2019-01-03", "Dover", "Helsinki", "Jan", "Kaniowski");
     addPassengerToCruise(pHeadCruise, pTailCruise, "2019-01-03", "Dover", "Helsinki", "Moritz", "Haber");

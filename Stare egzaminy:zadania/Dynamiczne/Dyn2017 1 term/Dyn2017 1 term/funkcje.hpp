@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <string>
+#include <iostream>
 
 struct Zadanie
 {
@@ -18,11 +19,11 @@ struct Pracownik
     Zadanie * pZadania ;
 };
 
-Pracownik * znajdzLubDodajPracownika(Pracownik * & pHead, const std::string & nazwisko);
-void dodajZadanie (Zadanie * pRoot, const int & priorytet, const std::string & tresc);
-void dodajZadaniePracownikowi(Pracownik * pHead, const int & priorytet, const std::string & tresc, const std::string & nazwisko);
-void usunPracownikowBezZadan();
-void odwrocKolejnoscPracownikow();
+Pracownik * znajdzLubDodajPracownika(Pracownik * & pHead, Pracownik * & pTail, const std::string & nazwisko);
+void dodajZadanie (Zadanie * & pRoot, const int & priorytet, const std::string & tresc);
+void dodajZadaniePracownikowi(Pracownik * & pHead, Pracownik * & pTail, const int & priorytet, const std::string & tresc, const std::string & nazwisko);
+void usunPracownikowBezZadan(Pracownik * & pHead, Pracownik * & pTail);
+void odwrocKolejnoscPracownikow(Pracownik * & pHead, Pracownik * & pTail);
 
 void wypisz(Pracownik * pHead);
 void wypiszPracownikow (Pracownik * pHead);
