@@ -15,16 +15,16 @@ int main(int argc, const char * argv[]) {
     znajdzLubDodajPracownika(pHead, pTail, "Lisiewicz");
     
     
-    dodajZadaniePracownikowi(pHead, pTail, 5, "zadanie1", "Armak");
-    dodajZadaniePracownikowi(pHead, pTail, 10, "zadanie2", "Armak");
-    dodajZadaniePracownikowi(pHead, pTail, 12, "zadanie3", "Armak");
-
-    dodajZadaniePracownikowi(pHead, pTail, 7, "zadanie1", "Kuna");
-    dodajZadaniePracownikowi(pHead, pTail, 15, "zadanie1", "Bażant");
+//    dodajZadaniePracownikowi(pHead, pTail, 5, "zadanie1", "Armak");
+//    dodajZadaniePracownikowi(pHead, pTail, 10, "zadanie2", "Armak");
+//    dodajZadaniePracownikowi(pHead, pTail, 12, "zadanie3", "Armak");
+//
+//    dodajZadaniePracownikowi(pHead, pTail, 7, "zadanie1", "Kuna");
+//    dodajZadaniePracownikowi(pHead, pTail, 15, "zadanie1", "Bażant");
     
-//    usunPracownikowBezZadan(pHead, pTail);
+    usunPracownikowBezZadan(pHead, pTail);
     
-    odwrocKolejnoscPracownikow(pHead, pTail);
+//    odwrocKolejnoscPracownikow(pHead, pTail);
     
     wypisz(pHead);
     

@@ -82,21 +82,13 @@ void usunPracownikowBezZadan(Pracownik * & pHead, Pracownik * & pTail)
     Pracownik * tmp = pHead, * prev = nullptr;
     while(tmp) {
         if (tmp->pZadania == nullptr) {
-            if(tmp->pPrev == nullptr) {
-                tmp->pNext = pHead;
-                pHead->pPrev = nullptr;\
-                delete tmp;
-            }
-            else if (tmp->pNext == nullptr) {
-                tmp->pPrev = pTail;
-                pTail->pNext = nullptr;
-                delete tmp;
-            }
-            else {
-                prev->pNext = tmp->pNext;
-                tmp->pNext->pPrev = prev;
-                delete tmp;
-            }
+            if(tmp == pHead)
+                pHead = tmp->pNext;
+            else if (tmp->pNext != nullptr)
+                tmp->pNext->pPrev = tmp->pPrev;
+            else if(tmp->pPrev != nullptr)
+                tmp->pPrev->pNext = tmp->pNext;
+            delete tmp;
         }
         else
             prev = tmp;
