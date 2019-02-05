@@ -12,7 +12,7 @@ int main(int argc, const char * argv[]) {
     znajdzLubDodajPracownika(pHead, pTail, "Lisiewicz");
     znajdzLubDodajPracownika(pHead, pTail, "Suseł");
     znajdzLubDodajPracownika(pHead, pTail, "Armak");
-    znajdzLubDodajPracownika(pHead, pTail, "Lisiewicz");
+    znajdzLubDodajPracownika(pHead, pTail, "Żubr");
     
     
 //    dodajZadaniePracownikowi(pHead, pTail, 5, "zadanie1", "Armak");
@@ -22,9 +22,9 @@ int main(int argc, const char * argv[]) {
 //    dodajZadaniePracownikowi(pHead, pTail, 7, "zadanie1", "Kuna");
 //    dodajZadaniePracownikowi(pHead, pTail, 15, "zadanie1", "Bażant");
     
-    usunPracownikowBezZadan(pHead, pTail);
+//    usunPracownikowBezZadan(pHead, pTail);
     
-//    odwrocKolejnoscPracownikow(pHead, pTail);
+    odwrocKolejnoscPracownikow(pHead, pTail);
     
     wypisz(pHead);
     

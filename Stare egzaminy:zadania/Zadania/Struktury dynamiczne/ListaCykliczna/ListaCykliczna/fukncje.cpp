@@ -48,22 +48,34 @@ int zliczElementy ( element * pHead )
 
 void usunElem ( element * & pHead , const T & wartosc )
 {
-    //lista pusta
-    if (pHead == NULL)
+//    //lista pusta
+//    if (pHead == NULL)
+//        return;
+//
+//    element *pCurr = pHead;
+//    while (pCurr->wartosc != wartosc)
+//    {
+//        //doszliśmy do końca listy, czyli nie znaleziono podanej wartosci
+//        if (pCurr->pNext == pHead)
+//            break;
+//
+//        pCurr = pCurr -> pNext;
+//    }
+//
+//    usunElem(pHead, pCurr);
+    if(pHead == nullptr)
         return;
-
-    element *pCurr = pHead;
-    while (pCurr->wartosc != wartosc)
-    {
-        //doszliśmy do końca listy, czyli nie znaleziono podanej wartosci
-        if (pCurr->pNext == pHead)
+    
+    element * tmp = pHead;
+    while(tmp->pNext != pHead) {
+        if(tmp->pNext->wartosc == wartosc) {
+            tmp->pNext = tmp->pNext->pNext;
+            delete tmp->pNext;
             break;
-
-        pCurr = pCurr -> pNext;
+        }
+        else
+            tmp = tmp->pNext;
     }
-    
-    usunElem(pHead, pCurr);
-    
 }
 
 void usunWszystkie ( element * & pHead , const T & wartosc )
@@ -78,7 +90,7 @@ void usunWszystkie ( element * & pHead , const T & wartosc )
         //doszliśmy do końca listy, czyli nie znaleziono podanej wartosci
         if (pCurr->pNext == pHead)
             break;
-        
+
         if(pCurr->wartosc == wartosc)
             usunElem(pHead, pCurr);
         pCurr = pCurr -> pNext;

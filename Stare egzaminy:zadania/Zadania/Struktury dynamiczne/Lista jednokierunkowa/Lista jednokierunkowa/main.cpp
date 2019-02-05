@@ -11,10 +11,10 @@ int main(int argc, const char * argv[]) {
         dodajIteracyjnieDoListyPosortowanej(pHead, i);
     
     for(int i : {0, 2, 5, 9, 8, 0, 0, 0})
-        dodajIteracyjnieDoListyPosortowanej(pHead2, i);
+        dodajRekurencyjnieDoListyPosortowanej(pHead2, i);
 
-    wypisz(pHead);
-    usunPowtorzenia(pHead);
+    wypisz(pHead2);
+//    usunPowtorzenia(pHead);
     wypisz(pHead);
 //    wypisz(scalListyPosortowane(pHead, pHead2));
     return 0;

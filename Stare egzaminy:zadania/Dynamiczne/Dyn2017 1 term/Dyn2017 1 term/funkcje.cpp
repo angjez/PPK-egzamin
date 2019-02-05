@@ -33,7 +33,7 @@ Pracownik * znajdzLubDodajPracownika(Pracownik * & pHead, Pracownik * & pTail, c
         }
         Pracownik * nowy = new Pracownik {nazwisko, tmp, tmp->pNext};
         tmp->pNext = nowy;
-        tmp->pNext->pPrev = nowy;
+        nowy->pNext->pPrev = nowy;
         return nowy;
     }
 }
@@ -79,7 +79,7 @@ void dodajZadaniePracownikowi(Pracownik * & pHead, Pracownik * & pTail, const in
 
 void usunPracownikowBezZadan(Pracownik * & pHead, Pracownik * & pTail)
 {
-    Pracownik * tmp = pHead, * prev = nullptr;
+    Pracownik * tmp = pHead;
     while(tmp) {
         if (tmp->pZadania == nullptr) {
             if(tmp == pHead)
@@ -91,7 +91,6 @@ void usunPracownikowBezZadan(Pracownik * & pHead, Pracownik * & pTail)
             delete tmp;
         }
         else
-            prev = tmp;
             tmp = tmp -> pNext;
     }
 }

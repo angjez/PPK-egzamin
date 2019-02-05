@@ -19,7 +19,14 @@ void dodajIteracyjnieDoListyPosortowanej ( element * & pHead , T liczba )
 
 void dodajRekurencyjnieDoListyPosortowanej ( element * & pHead , T liczba )
 {
-
+    if(pHead == nullptr)
+        pHead = new element {liczba, nullptr};
+    else {
+        if(pHead->wartosc > liczba)
+            pHead = new element {liczba, pHead};
+        else
+            dodajRekurencyjnieDoListyPosortowanej(pHead->pNext, liczba);
+    }
 }
 
 element * znajdzElementIteracyjnie ( element * pHead , T liczba )

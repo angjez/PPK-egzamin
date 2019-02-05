@@ -1,5 +1,4 @@
 // 1. (3 punkty) Proszę zdefiniować funkcję znajdzLubDodajPracownika, która odszukuje pracownika o podanym nazwisku. Jeżeli pracownik zostanie znaleziony, to funkcja zwraca adres pracownika. Jeżeli pracownika nie ma w liście, to funkcja dodaje go w odpowiednim miejscu i zwraca adres świeżo dodanego pracownika.
-
 Pracownik * znajdzLubDodajPracownika(Pracownik * & pHead, Pracownik * & pTail, const std::string & nazwisko)
 {
 	//wyszukanie czy pracownik już istnieje
@@ -42,7 +41,6 @@ Pracownik * znajdzLubDodajPracownika(Pracownik * & pHead, Pracownik * & pTail, c
 }
 
 // 2. (1punkty) Proszę napisać funkcję dodajZadanie, która dodaje zadanie do drzewa zadań pracownika. Zadania ułożone są w drzewie według priorytetów zadań.
-
 void dodajZadanie (Zadanie * & pRoot, const int & priorytet, const std::string & tresc)
 {
     if (not pRoot)
@@ -83,11 +81,10 @@ void dodajZadaniePracownikowi(Pracownik * & pHead, Pracownik * & pTail, const in
     dodajZadanie(znajdzLubDodajPracownika(pHead, pTail, nazwisko)->pZadania, priorytet, tresc);
 }
 
-
-// 4. (3 punkty) Proszę napisać funkcję usunPracownikowBezZadan, która usuwa wszystkich pracowni- ków, którzy nie mają żadnych zadań. Możliwe, że po usunięciu pracowników bez zadań lista pra- cowników będzie pusta.
+// 4. (3 punkty) Proszę napisać funkcję usunPracownikowBezZadan, która usuwa wszystkich pracowni- ków, którzy nie mają żadnych zadań. Możliwe, że po usunięciu pracowników bez zadań lista pracowników będzie pusta.
 void usunPracownikowBezZadan(Pracownik * & pHead, Pracownik * & pTail)
 {
-    Pracownik * tmp = pHead, * prev = nullptr;
+    Pracownik * tmp = pHead;
     while(tmp) {
         if (tmp->pZadania == nullptr) {
             if(tmp == pHead)
@@ -99,7 +96,6 @@ void usunPracownikowBezZadan(Pracownik * & pHead, Pracownik * & pTail)
             delete tmp;
         }
         else
-            prev = tmp;
             tmp = tmp -> pNext;
     }
 }

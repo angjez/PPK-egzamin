@@ -145,17 +145,28 @@ element * przenies ( element * & pHeadWej, element * pTailWej, const T & wartosc
 
 void usunElementy (element * & pHead, element * & pTail , const T & wartosc )
 {
-    while(znajdz(pHead, wartosc)!=nullptr){
-        //element do usunięcia jest głową
-        if(znajdz(pHead, wartosc)==pHead)
-            pHead = znajdz(pHead, wartosc)->pNext;
-        //element do usunięcia ma następnika
-        if(znajdz(pHead, wartosc)->pNext!=nullptr)
-            znajdz(pHead, wartosc)->pNext->pPrev=znajdz(pHead, wartosc)->pPrev;
-        //element do usunięcia ma poprzednika
-        if(znajdz(pHead, wartosc)->pPrev!=nullptr)
-            znajdz(pHead, wartosc)->pPrev->pNext=znajdz(pHead, wartosc)->pNext;
-        delete znajdz(pHead, wartosc);
+    if (pHead == NULL)
+        return;
+    
+    element *tmp = pHead;
+    while(tmp)
+    {
+        if(tmp->wartosc == wartosc) {
+            if(tmp == pHead)
+                pHead = tmp->pNext;
+            if(tmp == pTail)
+                pTail = tmp->pPrev;
+            if(tmp->pNext!=nullptr)
+                tmp->pNext->pPrev=tmp->pPrev;
+            if(tmp->pPrev!=nullptr)
+                tmp->pPrev->pNext=tmp->pNext;
+            element * nast = tmp->pNext;
+            delete tmp;
+            tmp = nast;
+
+        }
+        else
+            tmp = tmp->pNext;
     }
 }
 

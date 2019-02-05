@@ -7,8 +7,8 @@ int main(int argc, const char * argv[]) {
     element * pHead = nullptr;
     element * pHead2 = nullptr;
     
-    for(int i : {1, 2, 3, 4})
-        dodajNaPoczatek(pHead, i);
+//    for(int i : {1, 2, 3, 4})
+//        dodajNaPoczatek(pHead, i);
     
 
     for(int i : {5, 6, 7 , 8})
@@ -18,9 +18,9 @@ int main(int argc, const char * argv[]) {
     
     wypisz(pHead);
     
-    usun(pHead);
+    usunElem(pHead, 3);
     
-//    wypisz(pHead);
+    wypisz(pHead);
     
     return 0;
 }
