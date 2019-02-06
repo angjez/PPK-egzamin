@@ -22,7 +22,7 @@ void dodajRekurencyjnieDoListyPosortowanej ( element * & pHead , T liczba )
     if(pHead == nullptr)
         pHead = new element {liczba, nullptr};
     else {
-        if(pHead->wartosc > liczba)
+        if(pHead->wartosc >= liczba)
             pHead = new element {liczba, pHead};
         else
             dodajRekurencyjnieDoListyPosortowanej(pHead->pNext, liczba);
@@ -227,9 +227,12 @@ void usunElement ( element * & pHead , T wartosc )
 
 void usunElementy ( element * & pHead , T wartosc )
 {
+    if(pHead == nullptr)
+        return;
+    
     element * pCurr = pHead, * pPrev = nullptr;
 
-    //szukana wartość to głowa
+//    szukana wartość to głowa
     while (pCurr != nullptr && pCurr->wartosc == wartosc)
     {
         pHead = pCurr->pNext;
@@ -239,48 +242,40 @@ void usunElementy ( element * & pHead , T wartosc )
     
     while (pCurr != nullptr)
     {
-        while (pCurr != nullptr && pCurr->wartosc != wartosc)
-        {
+        if(pCurr->wartosc == wartosc) {
+            pPrev->pNext = pCurr->pNext;
+            delete pCurr;
+            pCurr = pPrev->pNext;
+        }
+        
+        else {
             pPrev = pCurr;
             pCurr = pCurr->pNext;
         }
-
-        //nie znaleziono wartosci
-        if (pCurr == nullptr)
-            return;
-
-        pPrev->pNext = pCurr->pNext;
-        delete pCurr;
-        pCurr = pPrev->pNext;
     }
 }
 
 void usunParzyste (element * & pHead)
 {
-    element * pCurr = pHead, * pPrev = nullptr;
-    
-    while (pCurr != nullptr && ((pCurr->wartosc % 2) == 0))
-    {
-        pHead = pCurr->pNext;
-        delete pCurr;
-        pCurr = pHead;
-    }
+    element * pCurr = pHead;
     
     while (pCurr != nullptr)
     {
         while (pCurr != nullptr && ((pCurr->wartosc % 2) != 0))
-        {
-            pPrev = pCurr;
             pCurr = pCurr->pNext;
-        }
         
-        //nie znaleziono wartosci
         if (pCurr == nullptr)
             return;
-        
-        pPrev->pNext = pCurr->pNext;
-        delete pCurr;
-        pCurr = pPrev->pNext;
+        else if(pCurr == pHead) {
+            pHead = pCurr->pNext;
+            delete pCurr;
+            pCurr = pHead;
+        }
+        else {
+            element * pTemp = pCurr->pNext;
+            delete pCurr;
+            pCurr = pTemp;
+        }
     }
 }
 
@@ -292,18 +287,16 @@ void usunOstatni (element * & pHead)
         return;
     //lista ma tylko jeden element - głowę
     if(pHead -> pNext == nullptr){
-        pHead = pTmp->pNext;
-        delete pTmp;
-        pTmp = pHead;
+        pHead = nullptr;
+        delete pHead;
         return;
     }
     //lista ma więcej elementów
-    while (pTmp->pNext != nullptr)
-    {
+    while (pTmp->pNext != nullptr) {
         pPrev = pTmp;
         pTmp = pTmp->pNext;
     }
-    pPrev->pNext = pTmp->pNext;
+    pPrev->pNext = nullptr;
     delete pTmp;
 }
 

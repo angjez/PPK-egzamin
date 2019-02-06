@@ -80,20 +80,21 @@ void usunElem ( element * & pHead , const T & wartosc )
 
 void usunWszystkie ( element * & pHead , const T & wartosc )
 {
-    //lista pusta
-    if (pHead == NULL)
+    if (pHead == nullptr)
         return;
     
-    element *pCurr = pHead;
-    while (pCurr)
+    element *pCurr = pHead, *pPrev = nullptr;
+    while (pCurr->pNext != pHead)
     {
-        //doszliśmy do końca listy, czyli nie znaleziono podanej wartosci
-        if (pCurr->pNext == pHead)
-            break;
-
-        if(pCurr->wartosc == wartosc)
-            usunElem(pHead, pCurr);
-        pCurr = pCurr -> pNext;
+        if(pCurr->wartosc == wartosc) {
+            pPrev->pNext = pCurr->pNext;
+            delete pCurr;
+            pCurr = pPrev->pNext;
+        }
+        else {
+            pPrev = pCurr;
+            pCurr = pCurr -> pNext;
+        }
     }
 }
 
